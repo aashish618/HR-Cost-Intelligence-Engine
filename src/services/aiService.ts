@@ -9,12 +9,11 @@ interface AttributionResult {
 
 // Local heuristics keywords database
 const PROJECT_KEYWORDS: Record<string, string[]> = {
-  'proj-pol': ['polaris', 'mobile', 'react native', 'onboarding', 'wireframe', 'ux', 'figma', 'checkout', 'ui', 'app', 'bug triage', 'screen'],
-  'proj-zen': ['zenith', 'database', 'db', 'migration', 'postgres', 'pg', 'query', 'replica', 'aws', 'infra', 'cluster', 'partitioning', 'indexing'],
-  'proj-sec': ['cybershield', 'shield', 'security', 'audit', 'soc2', 'pen test', 'remediation', 'threat', 'vulnerability', 'encryption', 'compliance'],
-  'proj-hel': ['helios', 'intranet', 'expense', 'portal', 'stylesheet', 'internal portal', 'employee portal'],
-  'proj-bd': ['nexus', 'rfp', 'proposal', 'pitch', 'bid', 'business dev', 'contract', 'sales'],
-  'proj-admin': ['all-hands', 'hr', '1-on-1', 'one-on-one', 'coffee', 'catchup', 'lunch', 'administrative', 'operation', 'announcement', 'office']
+  'proj-bhp': ['bharatpay', 'upi', 'merchant', 'onboarding', 'payment gateway', 'pos', 'checkout', 'qr code', 'settlement', 'reconciliation', 'transaction'],
+  'proj-adb': ['aadhaar', 'uidai', 'kyc', 'biometric', 'identity', 'verification', 'bridge', 'gateway', 'auth', 'security', 'audit', 'compliance'],
+  'proj-ayl': ['ayushman', 'health stack', 'abdm', 'consent manager', 'health records', 'e-sanjeevani', 'hospital', 'integration', 'clinical'],
+  'proj-ondc': ['ondc', 'open commerce', 'buyer app', 'seller app', 'registry', 'gateway', 'e-commerce', 'catalogue', 'network'],
+  'proj-admin': ['all-hands', 'hr', '1-on-1', 'one-on-one', 'chai', 'catchup', 'lunch', 'administrative', 'operation', 'announcement', 'office', 'review']
 };
 
 export const aiService = {

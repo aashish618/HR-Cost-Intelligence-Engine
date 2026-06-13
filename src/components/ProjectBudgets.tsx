@@ -34,9 +34,9 @@ export const ProjectBudgets: React.FC<ProjectBudgetsProps> = ({
   // Helper: Get hourly rate for an attendee
   const getAttendeeRate = (email: string): number => {
     const emp = employees.find(e => e.email.toLowerCase() === email.toLowerCase());
-    if (!emp) return 80;
+    if (!emp) return 1500;
     const rateObj = roleRates.find(r => r.role === emp.role);
-    return rateObj ? rateObj.hourlyRate : 80;
+    return rateObj ? rateObj.hourlyRate : 1500;
   };
 
   // Helper: Calculate cost of a single meeting
@@ -138,7 +138,7 @@ export const ProjectBudgets: React.FC<ProjectBudgetsProps> = ({
               />
             </div>
             <div style={styles.formGroup}>
-              <label>Budget Limit ($)</label>
+              <label>Budget Limit (₹)</label>
               <input 
                 type="number" 
                 value={newBudget} 
@@ -243,7 +243,7 @@ export const ProjectBudgets: React.FC<ProjectBudgetsProps> = ({
               <div style={styles.projectStatsRow}>
                 <div style={styles.statBox}>
                   <span style={styles.statLabel}>Accrued Cost</span>
-                  <span style={styles.statVal}>${cost.toLocaleString('en-US', { maximumFractionDigits: 0 })}</span>
+                  <span style={styles.statVal}>₹{cost.toLocaleString('en-IN', { maximumFractionDigits: 0 })}</span>
                 </div>
                 <div style={styles.statBox}>
                   <span style={styles.statLabel}>Person Hours</span>
@@ -277,7 +277,7 @@ export const ProjectBudgets: React.FC<ProjectBudgetsProps> = ({
                       </div>
                     ) : (
                       <div style={styles.budgetDisplayRow}>
-                        <span style={styles.budgetLimitText}>Limit: ${budget.toLocaleString()}</span>
+                        <span style={styles.budgetLimitText}>Limit: ₹{budget.toLocaleString('en-IN')}</span>
                         {isAdminMode && (
                           <button 
                             onClick={() => {
@@ -309,7 +309,7 @@ export const ProjectBudgets: React.FC<ProjectBudgetsProps> = ({
                       <AlertCircle size={14} color={accentColor} />
                       <span style={{ fontSize: '0.725rem', color: accentColor }}>
                         {alertState === 'red' 
-                          ? `Budget overspent by $${(cost - budget).toLocaleString('en-US', { maximumFractionDigits: 0 })}!`
+                          ? `Budget overspent by ₹${(cost - budget).toLocaleString('en-IN', { maximumFractionDigits: 0 })}!`
                           : `Approaching budget maximum. Burn rate is critical.`}
                       </span>
                     </div>

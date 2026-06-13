@@ -449,7 +449,7 @@ export const CalendarSync: React.FC<CalendarSyncProps> = ({
                       </td>
                       <td>
                         <div style={styles.meetingCostCell}>
-                          <span style={styles.meetingCost}>${cost.toLocaleString('en-US', { maximumFractionDigits: 1 })}</span>
+                          <span style={styles.meetingCost}>₹{cost.toLocaleString('en-US', { maximumFractionDigits: 1 })}</span>
                           <span style={styles.meetingDuration}>{m.durationMinutes} mins</span>
                         </div>
                       </td>
@@ -552,8 +552,8 @@ export const CalendarSync: React.FC<CalendarSyncProps> = ({
                                           <span style={styles.attendeeRole}>{emp ? emp.role : 'Guest'}</span>
                                         </div>
                                         <div style={styles.attendeeCostBreakdown}>
-                                          <span style={styles.attendeeCostVal}>${shareCost.toFixed(0)}</span>
-                                          <span style={styles.attendeeRateVal}>${rate}/hr</span>
+                                          <span style={styles.attendeeCostVal}>₹{shareCost.toFixed(0)}</span>
+                                          <span style={styles.attendeeRateVal}>₹{rate}/hr</span>
                                         </div>
                                       </div>
                                     );

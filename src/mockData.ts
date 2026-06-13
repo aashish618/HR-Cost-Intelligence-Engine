@@ -1,93 +1,83 @@
 import type { Employee, RoleRate, Project, Meeting, AppSettings } from './types';
 
 export const INITIAL_ROLE_RATES: RoleRate[] = [
-  { role: 'VP Engineering', hourlyRate: 200 },
-  { role: 'Principal Architect', hourlyRate: 175 },
-  { role: 'Lead Product Manager', hourlyRate: 130 },
-  { role: 'Senior Product Designer', hourlyRate: 110 },
-  { role: 'Senior Software Engineer', hourlyRate: 120 },
-  { role: 'Software Engineer', hourlyRate: 90 },
-  { role: 'Business Development Manager', hourlyRate: 100 },
-  { role: 'HR Manager', hourlyRate: 80 }
+  { role: 'VP Engineering', hourlyRate: 4000 },
+  { role: 'Principal Architect', hourlyRate: 3500 },
+  { role: 'Lead Product Manager', hourlyRate: 2500 },
+  { role: 'Senior Product Designer', hourlyRate: 2000 },
+  { role: 'Senior Software Engineer', hourlyRate: 2200 },
+  { role: 'Software Engineer', hourlyRate: 1500 },
+  { role: 'Business Development Manager', hourlyRate: 1800 },
+  { role: 'HR Manager', hourlyRate: 1200 }
 ];
 
 export const INITIAL_EMPLOYEES: Employee[] = [
-  { id: 'emp-1', name: 'Sarah Jenkins', email: 'sarah.j@company.com', role: 'VP Engineering', primaryProjectId: 'proj-pol' },
-  { id: 'emp-2', name: 'Alex Rivera', email: 'alex.r@company.com', role: 'Principal Architect', primaryProjectId: 'proj-zen' },
-  { id: 'emp-3', name: 'Maya Patel', email: 'maya.p@company.com', role: 'Lead Product Manager', primaryProjectId: 'proj-pol' },
-  { id: 'emp-4', name: 'Chen Wei', email: 'chen.w@company.com', role: 'Senior Software Engineer', primaryProjectId: 'proj-pol' },
-  { id: 'emp-5', name: 'Emily Brooks', email: 'emily.b@company.com', role: 'Senior Product Designer', primaryProjectId: 'proj-pol' },
-  { id: 'emp-6', name: 'Marcus Vance', email: 'marcus.v@company.com', role: 'Software Engineer', primaryProjectId: 'proj-zen' },
-  { id: 'emp-7', name: 'Jordan Lee', email: 'jordan.l@company.com', role: 'Software Engineer', primaryProjectId: 'proj-sec' },
-  { id: 'emp-8', name: 'Clara Diaz', email: 'clara.d@company.com', role: 'HR Manager', primaryProjectId: 'proj-admin' },
-  { id: 'emp-9', name: 'David Kim', email: 'david.k@company.com', role: 'Business Development Manager', primaryProjectId: 'proj-bd' },
-  { id: 'emp-10', name: 'Liam Murphy', email: 'liam.m@company.com', role: 'Software Engineer', primaryProjectId: 'proj-hel' }
+  { id: 'emp-1', name: 'Aarav Sharma', email: 'aarav.s@tattva.in', role: 'VP Engineering', primaryProjectId: 'proj-bhp' },
+  { id: 'emp-2', name: 'Aditi Patel', email: 'aditi.p@tattva.in', role: 'Principal Architect', primaryProjectId: 'proj-adb' },
+  { id: 'emp-3', name: 'Rohan Deshmukh', email: 'rohan.d@tattva.in', role: 'Lead Product Manager', primaryProjectId: 'proj-bhp' },
+  { id: 'emp-4', name: 'Priya Nair', email: 'priya.n@tattva.in', role: 'Senior Software Engineer', primaryProjectId: 'proj-bhp' },
+  { id: 'emp-5', name: 'Ananya Iyer', email: 'ananya.i@tattva.in', role: 'Senior Product Designer', primaryProjectId: 'proj-bhp' },
+  { id: 'emp-6', name: 'Kabir Malhotra', email: 'kabir.m@tattva.in', role: 'Software Engineer', primaryProjectId: 'proj-adb' },
+  { id: 'emp-7', name: 'Diya Sen', email: 'diya.s@tattva.in', role: 'Software Engineer', primaryProjectId: 'proj-ayl' },
+  { id: 'emp-8', name: 'Neha Gupta', email: 'neha.g@tattva.in', role: 'HR Manager', primaryProjectId: 'proj-admin' },
+  { id: 'emp-9', name: 'Amit Verma', email: 'amit.v@tattva.in', role: 'Business Development Manager', primaryProjectId: 'proj-ondc' },
+  { id: 'emp-10', name: 'Vikram Rao', email: 'vikram.r@tattva.in', role: 'Software Engineer', primaryProjectId: 'proj-ondc' }
 ];
 
 export const INITIAL_PROJECTS: Project[] = [
   {
-    id: 'proj-pol',
-    name: 'Project Polaris',
-    code: 'PROJ-POL',
-    description: 'Rebuilding the core mobile application framework and user onboarding flow.',
-    budget: 45000,
+    id: 'proj-bhp',
+    name: 'Project BharatPay',
+    code: 'PROJ-BHP',
+    description: 'Scaling UPI merchant transaction portals, dynamic QR code scanners, and real-time settle APIs.',
+    budget: 2500000,
     priority: 'high',
     status: 'active',
     color: '#6366f1' // Indigo
   },
   {
-    id: 'proj-zen',
-    name: 'Project Zenith',
-    code: 'PROJ-ZEN',
-    description: 'Migration of database clusters to multi-region cloud services and query optimization.',
-    budget: 30000,
-    priority: 'medium',
+    id: 'proj-adb',
+    name: 'Project AadhaarBridge',
+    code: 'PROJ-ADB',
+    description: 'Secure UIDAI biometric e-KYC validation gateway, consent logs, and regulatory compliance audit.',
+    budget: 1200000,
+    priority: 'high',
     status: 'active',
     color: '#a855f7' // Purple
   },
   {
-    id: 'proj-sec',
-    name: 'Project CyberShield',
-    code: 'PROJ-SEC',
-    description: 'Security penetration testing, vulnerability remediation, and SOC2 certification readiness.',
-    budget: 15000,
-    priority: 'high',
+    id: 'proj-ayl',
+    name: 'Project AyushmanLink',
+    code: 'PROJ-AYL',
+    description: 'ABDM health locker stacks, clinical metadata templates, and electronic health records consent managers.',
+    budget: 1800000,
+    priority: 'medium',
     status: 'active',
     color: '#3b82f6' // Blue
   },
   {
-    id: 'proj-hel',
-    name: 'Project Helios',
-    code: 'PROJ-HEL',
-    description: 'Upgrading the internal intranet employee portal and expense submission workflow.',
-    budget: 8000,
+    id: 'proj-ondc',
+    name: 'Project ONDC-Connect',
+    code: 'PROJ-ONDC',
+    description: 'ONDC registry seller application protocol integration, catalog indexing, and logistics sync APIs.',
+    budget: 800000,
     priority: 'low',
     status: 'active',
     color: '#eab308' // Yellow
   },
   {
-    id: 'proj-bd',
-    name: 'Nexus Corp Bid',
-    code: 'BD-NEXUS',
-    description: 'Preparing the technical proposal, architecture plans, and cost estimates for Nexus Corp RFP.',
-    budget: 10000,
-    priority: 'medium',
-    status: 'active',
-    color: '#10b981' // Emerald
-  },
-  {
     id: 'proj-admin',
     name: 'Internal Operations',
     code: 'ADMIN-OPS',
-    description: 'General administrative tasks, HR functions, company-wide meetings, and non-billable syncs.',
-    budget: 0, // Incurred cost here is operational overhead
+    description: 'General administrative tasks, HR functions, company-wide meetings, tea sessions, and non-billable syncs.',
+    budget: 0,
     priority: 'low',
     status: 'active',
     color: '#64748b' // Slate
   }
 ];
 
-// Seed meetings for the past 30 days. Let's base them around June 2026.
+// Seed meetings for the past 30 days. Base around June 2026.
 const getPastDateStr = (daysAgo: number, hours: number, minutes: number): string => {
   const date = new Date('2026-06-13T12:00:00');
   date.setDate(date.getDate() - daysAgo);
@@ -96,151 +86,149 @@ const getPastDateStr = (daysAgo: number, hours: number, minutes: number): string
 };
 
 export const INITIAL_MEETINGS: Meeting[] = [
-  // Polaris meetings (High budget, high cost)
+  // BharatPay (UPI project)
   {
     id: 'meet-1',
-    title: 'Polaris Mobile App Architecture Kickoff',
-    description: 'Reviewing the system architecture design, React Native integration steps, and state management strategies.',
+    title: 'BharatPay Merchant UPI Integration Kickoff',
+    description: 'Reviewing settlement scripts, transaction callback routes, POS scanner integration, and settlement APIs.',
     startTime: getPastDateStr(12, 10, 0),
     endTime: getPastDateStr(12, 11, 30),
     durationMinutes: 90,
-    organizerEmail: 'sarah.j@company.com',
-    attendeeEmails: ['sarah.j@company.com', 'alex.r@company.com', 'maya.p@company.com', 'chen.w@company.com', 'emily.b@company.com'],
-    attributedProjectId: 'proj-pol',
+    organizerEmail: 'aarav.s@tattva.in',
+    attendeeEmails: ['aarav.s@tattva.in', 'aditi.p@tattva.in', 'rohan.d@tattva.in', 'priya.n@tattva.in', 'ananya.i@tattva.in'],
+    attributedProjectId: 'proj-bhp',
     attributionConfidence: 0.98,
     attributionMethod: 'heuristic',
     isManualOverride: false
   },
   {
     id: 'meet-2',
-    title: 'Polaris UX Wireframes Review',
-    description: 'Walking through Figma files for onboarding screens, profile setup, and checkout flow.',
+    title: 'BharatPay QR Code onboarding flow',
+    description: 'Walking through Figma files for merchant profiles and QR generation workflows.',
     startTime: getPastDateStr(11, 14, 0),
     endTime: getPastDateStr(11, 15, 0),
     durationMinutes: 60,
-    organizerEmail: 'emily.b@company.com',
-    attendeeEmails: ['emily.b@company.com', 'maya.p@company.com', 'sarah.j@company.com'],
-    attributedProjectId: 'proj-pol',
+    organizerEmail: 'ananya.i@tattva.in',
+    attendeeEmails: ['ananya.i@tattva.in', 'rohan.d@tattva.in', 'aarav.s@tattva.in'],
+    attributedProjectId: 'proj-bhp',
     attributionConfidence: 0.95,
     attributionMethod: 'heuristic',
     isManualOverride: false
   },
   {
     id: 'meet-3',
-    title: 'Polaris Sprint Standup & Bug Triage',
-    description: 'Daily standup to resolve blockers for release candidate RC-1 and allocate priority bug fixes.',
+    title: 'BharatPay UPI Bug Triage',
+    description: 'Daily sync to resolve merchant settlement delay logs on production.',
     startTime: getPastDateStr(10, 9, 30),
     endTime: getPastDateStr(10, 10, 0),
     durationMinutes: 30,
-    organizerEmail: 'maya.p@company.com',
-    attendeeEmails: ['maya.p@company.com', 'chen.w@company.com', 'emily.b@company.com', 'sarah.j@company.com'],
-    attributedProjectId: 'proj-pol',
-    attributionConfidence: 0.92,
-    attributionMethod: 'heuristic',
-    isManualOverride: false
-  },
-  {
-    id: 'meet-4',
-    title: 'Polaris Sprint Review & Retrospective',
-    description: 'Demo of core workflows built in Sprint 4. Discussing what went well and areas of improvement.',
-    startTime: getPastDateStr(7, 15, 0),
-    endTime: getPastDateStr(7, 16, 30),
-    durationMinutes: 90,
-    organizerEmail: 'maya.p@company.com',
-    attendeeEmails: ['maya.p@company.com', 'chen.w@company.com', 'emily.b@company.com', 'sarah.j@company.com', 'alex.r@company.com'],
-    attributedProjectId: 'proj-pol',
-    attributionConfidence: 0.96,
-    attributionMethod: 'heuristic',
-    isManualOverride: false
-  },
-
-  // Zenith meetings
-  {
-    id: 'meet-5',
-    title: 'Zenith Database Schema Planning',
-    description: 'Deciding on partitioning key, indexing strategies, and migration steps for PG clusters.',
-    startTime: getPastDateStr(14, 11, 0),
-    endTime: getPastDateStr(14, 12, 30),
-    durationMinutes: 90,
-    organizerEmail: 'alex.r@company.com',
-    attendeeEmails: ['alex.r@company.com', 'marcus.v@company.com', 'chen.w@company.com'],
-    attributedProjectId: 'proj-zen',
+    organizerEmail: 'rohan.d@tattva.in',
+    attendeeEmails: ['rohan.d@tattva.in', 'priya.n@tattva.in', 'ananya.i@tattva.in', 'aarav.s@tattva.in'],
+    attributedProjectId: 'proj-bhp',
     attributionConfidence: 0.94,
     attributionMethod: 'heuristic',
     isManualOverride: false
   },
   {
-    id: 'meet-6',
-    title: 'Zenith Cloud Infra Review',
-    description: 'Discussing multi-region deployment costs and replication delays across AWS regions.',
-    startTime: getPastDateStr(9, 10, 0),
-    endTime: getPastDateStr(9, 11, 0),
-    durationMinutes: 60,
-    organizerEmail: 'alex.r@company.com',
-    attendeeEmails: ['alex.r@company.com', 'marcus.v@company.com', 'sarah.j@company.com'],
-    attributedProjectId: 'proj-zen',
-    attributionConfidence: 0.91,
+    id: 'meet-4',
+    title: 'BharatPay UPI Sprint Review',
+    description: 'Demos of settlement reconciliation scripts and merchant payouts ledger.',
+    startTime: getPastDateStr(7, 15, 0),
+    endTime: getPastDateStr(7, 16, 30),
+    durationMinutes: 90,
+    organizerEmail: 'rohan.d@tattva.in',
+    attendeeEmails: ['rohan.d@tattva.in', 'priya.n@tattva.in', 'ananya.i@tattva.in', 'aarav.s@tattva.in', 'aditi.p@tattva.in'],
+    attributedProjectId: 'proj-bhp',
+    attributionConfidence: 0.96,
     attributionMethod: 'heuristic',
     isManualOverride: false
   },
 
-  // CyberShield meetings
+  // AadhaarBridge
+  {
+    id: 'meet-5',
+    title: 'AadhaarBridge e-KYC Schema Review',
+    description: 'Deciding on biometric e-KYC consent logs and verification flow via UIDAI APIs.',
+    startTime: getPastDateStr(14, 11, 0),
+    endTime: getPastDateStr(14, 12, 30),
+    durationMinutes: 90,
+    organizerEmail: 'aditi.p@tattva.in',
+    attendeeEmails: ['aditi.p@tattva.in', 'kabir.m@tattva.in', 'priya.n@tattva.in'],
+    attributedProjectId: 'proj-adb',
+    attributionConfidence: 0.96,
+    attributionMethod: 'heuristic',
+    isManualOverride: false
+  },
+  {
+    id: 'meet-6',
+    title: 'AadhaarBridge Security Runbook Audit',
+    description: 'Going through compliance logs, biometrics consent security, and data storage policies.',
+    startTime: getPastDateStr(9, 10, 0),
+    endTime: getPastDateStr(9, 11, 0),
+    durationMinutes: 60,
+    organizerEmail: 'aditi.p@tattva.in',
+    attendeeEmails: ['aditi.p@tattva.in', 'kabir.m@tattva.in', 'aarav.s@tattva.in'],
+    attributedProjectId: 'proj-adb',
+    attributionConfidence: 0.93,
+    attributionMethod: 'heuristic',
+    isManualOverride: false
+  },
+
+  // AyushmanLink (Health Stack)
   {
     id: 'meet-7',
-    title: 'SOC2 Compliance Audit Prep',
-    description: 'Gathering evidence for access control lists, key management policies, and database encryption audits.',
+    title: 'ABDM Consent Manager Integration',
+    description: 'Configuring health locker templates and electronic health record callbacks for health lockers.',
     startTime: getPastDateStr(8, 14, 0),
     endTime: getPastDateStr(8, 15, 0),
     durationMinutes: 60,
-    organizerEmail: 'jordan.l@company.com',
-    attendeeEmails: ['jordan.l@company.com', 'alex.r@company.com', 'sarah.j@company.com'],
-    attributedProjectId: 'proj-sec',
-    attributionConfidence: 0.89,
+    organizerEmail: 'diya.s@tattva.in',
+    attendeeEmails: ['diya.s@tattva.in', 'aditi.p@tattva.in', 'aarav.s@tattva.in'],
+    attributedProjectId: 'proj-ayl',
+    attributionConfidence: 0.91,
     attributionMethod: 'heuristic',
     isManualOverride: false
   },
   {
     id: 'meet-8',
-    title: 'Vulnerability Remediation War Room',
-    description: 'Resolving high-severity issues reported in recent penetration test of api gateways.',
+    title: 'AyushmanLink Health Stack Security Review',
+    description: 'Audit session on clinical metadata encryption schemes and user identity checks.',
     startTime: getPastDateStr(5, 10, 0),
     endTime: getPastDateStr(5, 13, 0), // 3 hours! Expensive meeting.
     durationMinutes: 180,
-    organizerEmail: 'jordan.l@company.com',
-    attendeeEmails: ['jordan.l@company.com', 'alex.r@company.com', 'chen.w@company.com', 'sarah.j@company.com'],
-    attributedProjectId: 'proj-sec',
+    organizerEmail: 'diya.s@tattva.in',
+    attendeeEmails: ['diya.s@tattva.in', 'aditi.p@tattva.in', 'priya.n@tattva.in', 'aarav.s@tattva.in'],
+    attributedProjectId: 'proj-ayl',
     attributionConfidence: 0.95,
     attributionMethod: 'heuristic',
     isManualOverride: false
   },
 
-  // Helios meetings
+  // ONDC-Connect
   {
     id: 'meet-9',
-    title: 'Helios Intranet Layout Redesign',
-    description: 'Updating navbar navigation and stylesheet tweaks for intranet portal.',
+    title: 'ONDC Catalogue Seller Integration',
+    description: 'Adjusting ONDC registry schemas, buyer app seller catalog queries, and logistics endpoints.',
     startTime: getPastDateStr(13, 11, 0),
     endTime: getPastDateStr(13, 11, 45),
     durationMinutes: 45,
-    organizerEmail: 'liam.m@company.com',
-    attendeeEmails: ['liam.m@company.com', 'emily.b@company.com'],
-    attributedProjectId: 'proj-hel',
-    attributionConfidence: 0.87,
+    organizerEmail: 'amit.v@tattva.in',
+    attendeeEmails: ['amit.v@tattva.in', 'ananya.i@tattva.in'],
+    attributedProjectId: 'proj-ondc',
+    attributionConfidence: 0.89,
     attributionMethod: 'heuristic',
     isManualOverride: false
   },
-
-  // BD meetings
   {
     id: 'meet-10',
-    title: 'Nexus Corp RFP Proposal Review',
-    description: 'Reviewing pricing spreadsheet, statement of work, and delivery milestones for Nexus Corp contract pitch.',
+    title: 'ONDC seller protocol client pitch',
+    description: 'Reviewing proposal details, milestones, and integration schedules for retail buyer apps.',
     startTime: getPastDateStr(6, 14, 0),
     endTime: getPastDateStr(6, 16, 0), // 2 hours
     durationMinutes: 120,
-    organizerEmail: 'david.k@company.com',
-    attendeeEmails: ['david.k@company.com', 'sarah.j@company.com', 'maya.p@company.com'],
-    attributedProjectId: 'proj-bd',
+    organizerEmail: 'amit.v@tattva.in',
+    attendeeEmails: ['amit.v@tattva.in', 'aarav.s@tattva.in', 'rohan.d@tattva.in'],
+    attributedProjectId: 'proj-ondc',
     attributionConfidence: 0.94,
     attributionMethod: 'heuristic',
     isManualOverride: false
@@ -249,16 +237,16 @@ export const INITIAL_MEETINGS: Meeting[] = [
   // Company Operations
   {
     id: 'meet-11',
-    title: 'Monthly Company All-Hands',
-    description: 'Company performance updates, Q2 roadmap review, employee milestones, and general announcements.',
+    title: 'Monthly Bangalore HQ All-Hands',
+    description: 'Tattva growth roadmap review, financial goals update, Q2 milestones, and general tea announcements.',
     startTime: getPastDateStr(15, 10, 0),
     endTime: getPastDateStr(15, 11, 0),
     durationMinutes: 60,
-    organizerEmail: 'clara.d@company.com',
+    organizerEmail: 'neha.g@tattva.in',
     attendeeEmails: [
-      'sarah.j@company.com', 'alex.r@company.com', 'maya.p@company.com', 
-      'chen.w@company.com', 'emily.b@company.com', 'marcus.v@company.com', 
-      'jordan.l@company.com', 'clara.d@company.com', 'david.k@company.com', 'liam.m@company.com'
+      'aarav.s@tattva.in', 'aditi.p@tattva.in', 'rohan.d@tattva.in', 
+      'priya.n@tattva.in', 'ananya.i@tattva.in', 'kabir.m@tattva.in', 
+      'diya.s@tattva.in', 'neha.g@tattva.in', 'amit.v@tattva.in', 'vikram.r@tattva.in'
     ], // EVERYONE is here! Massive cost!
     attributedProjectId: 'proj-admin',
     attributionConfidence: 0.99,
@@ -267,13 +255,13 @@ export const INITIAL_MEETINGS: Meeting[] = [
   },
   {
     id: 'meet-12',
-    title: '1-on-1: Sarah / Alex',
-    description: 'Regular catch up on career goals, architecture blockers, and technical leadership tasks.',
+    title: '1-on-1: Aarav / Aditi',
+    description: 'Regular career alignment and architecture check-in.',
     startTime: getPastDateStr(4, 15, 30),
     endTime: getPastDateStr(4, 16, 0),
     durationMinutes: 30,
-    organizerEmail: 'sarah.j@company.com',
-    attendeeEmails: ['sarah.j@company.com', 'alex.r@company.com'],
+    organizerEmail: 'aarav.s@tattva.in',
+    attendeeEmails: ['aarav.s@tattva.in', 'aditi.p@tattva.in'],
     attributedProjectId: 'proj-admin',
     attributionConfidence: 0.88,
     attributionMethod: 'heuristic',
@@ -283,14 +271,14 @@ export const INITIAL_MEETINGS: Meeting[] = [
   // Anomalous / Ambiguous / Low Confidence meetings
   {
     id: 'meet-13',
-    title: 'Sync',
+    title: 'Sync chat',
     description: 'Quick alignment chat',
     startTime: getPastDateStr(3, 10, 0),
     endTime: getPastDateStr(3, 10, 30),
     durationMinutes: 30,
-    organizerEmail: 'marcus.v@company.com',
-    attendeeEmails: ['marcus.v@company.com', 'jordan.l@company.com'],
-    attributedProjectId: 'unattributed', // Ambiguous title, description, and attendees work on diff projects
+    organizerEmail: 'kabir.m@tattva.in',
+    attendeeEmails: ['kabir.m@tattva.in', 'diya.s@tattva.in'],
+    attributedProjectId: 'unattributed',
     attributionConfidence: 0.22,
     attributionMethod: 'heuristic',
     isManualOverride: false
@@ -298,69 +286,69 @@ export const INITIAL_MEETINGS: Meeting[] = [
   {
     id: 'meet-14',
     title: 'Review and Brainstorming session',
-    description: 'We need to talk about things related to the project.',
+    description: 'We need to talk about things related to the digital roadmap.',
     startTime: getPastDateStr(2, 14, 0),
     endTime: getPastDateStr(2, 15, 30),
     durationMinutes: 90,
-    organizerEmail: 'liam.m@company.com',
-    attendeeEmails: ['liam.m@company.com', 'marcus.v@company.com', 'emily.b@company.com'],
-    attributedProjectId: 'unattributed', // Ambiguous project
+    organizerEmail: 'vikram.r@tattva.in',
+    attendeeEmails: ['vikram.r@tattva.in', 'kabir.m@tattva.in', 'ananya.i@tattva.in'],
+    attributedProjectId: 'unattributed',
     attributionConfidence: 0.35,
     attributionMethod: 'heuristic',
     isManualOverride: false
   },
   {
     id: 'meet-15',
-    title: 'Weekly Standup',
-    description: 'Go over weekly updates.',
+    title: 'Weekly standup',
+    description: 'Go over sprint updates.',
     startTime: getPastDateStr(1, 9, 0),
     endTime: getPastDateStr(1, 10, 0),
     durationMinutes: 60,
-    organizerEmail: 'chen.w@company.com',
-    attendeeEmails: ['chen.w@company.com', 'marcus.v@company.com', 'jordan.l@company.com'],
-    attributedProjectId: 'unattributed', // Standup with developers from 3 different projects
+    organizerEmail: 'priya.n@tattva.in',
+    attendeeEmails: ['priya.n@tattva.in', 'kabir.m@tattva.in', 'diya.s@tattva.in'],
+    attributedProjectId: 'unattributed',
     attributionConfidence: 0.18,
     attributionMethod: 'heuristic',
     isManualOverride: false
   },
   {
     id: 'meet-16',
-    title: 'Intranet Portal Portal Updates Discussion', // Intranet -> Helios
-    description: 'Let\'s run through what Liam has done with Clara.',
+    title: 'ONDC registry buyer app setup discussion',
+    description: 'Let\'s run through what Vikram has compiled.',
     startTime: getPastDateStr(2, 11, 0),
     endTime: getPastDateStr(2, 12, 0),
     durationMinutes: 60,
-    organizerEmail: 'clara.d@company.com',
-    attendeeEmails: ['clara.d@company.com', 'liam.m@company.com'],
-    attributedProjectId: 'proj-hel',
-    attributionConfidence: 0.65, // Medium confidence
+    organizerEmail: 'amit.v@tattva.in',
+    attendeeEmails: ['amit.v@tattva.in', 'vikram.r@tattva.in'],
+    attributedProjectId: 'proj-ondc',
+    attributionConfidence: 0.76,
     attributionMethod: 'heuristic',
     isManualOverride: false
   },
   {
     id: 'meet-17',
-    title: 'Technical Pitch Prep',
-    description: 'Setting up slides and architecture drawings for BD.',
+    title: 'BharatPay payment settle review',
+    description: 'Triage queries on bank settlements.',
     startTime: getPastDateStr(1, 13, 0),
     endTime: getPastDateStr(1, 14, 0),
     durationMinutes: 60,
-    organizerEmail: 'david.k@company.com',
-    attendeeEmails: ['david.k@company.com', 'alex.r@company.com'],
-    attributedProjectId: 'proj-bd',
-    attributionConfidence: 0.72, // Medium-high confidence
+    organizerEmail: 'rohan.d@tattva.in',
+    attendeeEmails: ['rohan.d@tattva.in', 'priya.n@tattva.in'],
+    attributedProjectId: 'proj-bhp',
+    attributionConfidence: 0.82,
     attributionMethod: 'heuristic',
     isManualOverride: false
   },
   {
     id: 'meet-18',
-    title: 'Ghost Sync', // Anomaly: scheduled but only 1 person attended
+    title: 'Chai alignment block', // Anomaly: scheduled but only 1 person attended
     description: 'Reviewing code alone on calendar block.',
     startTime: getPastDateStr(1, 15, 0),
     endTime: getPastDateStr(1, 16, 0),
     durationMinutes: 60,
-    organizerEmail: 'alex.r@company.com',
-    attendeeEmails: ['alex.r@company.com'], // Only 1 attendee
-    attributedProjectId: 'proj-zen',
+    organizerEmail: 'aditi.p@tattva.in',
+    attendeeEmails: ['aditi.p@tattva.in'], // Only 1 attendee
+    attributedProjectId: 'proj-adb',
     attributionConfidence: 0.85,
     attributionMethod: 'heuristic',
     isManualOverride: false

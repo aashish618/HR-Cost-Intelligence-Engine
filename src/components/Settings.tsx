@@ -131,7 +131,7 @@ export const Settings: React.FC<SettingsProps> = ({
           </div>
 
           <p style={styles.descText}>
-            Reset the prototype database. This will restore the pre-seeded hackathon scenario ( Sarah, Alex, project limits, and meeting logs ).
+            Reset the prototype database. This will restore the pre-seeded hackathon scenario ( Aarav, Aditi, project limits, and meeting logs ).
           </p>
 
           <div style={styles.actionCardBody}>

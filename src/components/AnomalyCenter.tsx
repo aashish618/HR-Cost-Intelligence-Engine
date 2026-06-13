@@ -58,7 +58,7 @@ export const AnomalyCenter: React.FC<AnomalyCenterProps> = ({
           type: 'budget_overrun',
           severity: 'critical',
           title: `Budget Overrun: ${p.name}`,
-          description: `Total meeting expenditure ($${totalCost.toLocaleString('en-US', { maximumFractionDigits: 0 })}) has exceeded the assigned project budget limit of $${p.budget.toLocaleString()} by $${(totalCost - p.budget).toLocaleString('en-US', { maximumFractionDigits: 0 })}.`,
+          description: `Total meeting expenditure (₹${totalCost.toLocaleString('en-US', { maximumFractionDigits: 0 })}) has exceeded the assigned project budget limit of ₹${p.budget.toLocaleString()} by ₹${(totalCost - p.budget).toLocaleString('en-US', { maximumFractionDigits: 0 })}.`,
           targetId: p.id,
           detectedAt: new Date().toISOString()
         });
@@ -68,7 +68,7 @@ export const AnomalyCenter: React.FC<AnomalyCenterProps> = ({
           type: 'budget_overrun',
           severity: 'warning',
           title: `Budget Warning: ${p.name}`,
-          description: `Project has spent $${totalCost.toLocaleString('en-US', { maximumFractionDigits: 0 })} (${((totalCost / p.budget) * 100).toFixed(0)}% of its $${p.budget.toLocaleString()} budget). Review recurrence patterns.`,
+          description: `Project has spent ₹${totalCost.toLocaleString('en-US', { maximumFractionDigits: 0 })} (${((totalCost / p.budget) * 100).toFixed(0)}% of its ₹${p.budget.toLocaleString()} budget). Review recurrence patterns.`,
           targetId: p.id,
           detectedAt: new Date().toISOString()
         });
@@ -124,20 +124,20 @@ export const AnomalyCenter: React.FC<AnomalyCenterProps> = ({
     // 4. High Cost / Low Priority Meetings
     meetings.forEach(m => {
       const cost = calculateMeetingCost(m);
-      // If a single meeting costs more than $400
-      if (cost > 400) {
+      // If a single meeting costs more than ₹10,000
+      if (cost > 10000) {
         const title = m.title.toLowerCase();
         const desc = m.description.toLowerCase();
         const isLowPriorityKeywords = 
-          title.includes('coffee') || title.includes('catchup') || title.includes('chat') || 
-          title.includes('lunch') || title.includes('hangout') || desc.includes('casual');
+          title.includes('chai') || title.includes('coffee') || title.includes('catchup') || 
+          title.includes('chat') || title.includes('lunch') || title.includes('hangout') || desc.includes('casual');
 
         list.push({
           id: `anomaly-costly-${m.id}`,
           type: 'low_priority_leak',
           severity: isLowPriorityKeywords ? 'critical' : 'info',
           title: `High Cost Sync: "${m.title}"`,
-          description: `This meeting cost the organization $${cost.toFixed(0)} for a single session. Attendees include multiple high-rate staff members. ${
+          description: `This meeting cost the organization ₹${cost.toFixed(0)} for a single session. Attendees include multiple high-rate staff members. ${
             isLowPriorityKeywords ? 'Critically flagged as casual/low-priority context.' : 'Audit meeting frequency.'
           }`,
           targetId: m.id,

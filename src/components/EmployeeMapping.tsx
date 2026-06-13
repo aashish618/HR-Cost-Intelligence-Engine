@@ -187,7 +187,7 @@ export const EmployeeMapping: React.FC<EmployeeMappingProps> = ({
                       </td>
                       <td>
                         {isAdminMode ? (
-                          <span style={styles.rateHighlight}>${rateVal}/hr</span>
+                          <span style={styles.rateHighlight}>₹{rateVal}/hr</span>
                         ) : (
                           <div style={styles.lockedRate} title="Enable Admin Mode in Sidebar to view financial details">
                             <Lock size={12} color="var(--text-muted)" />
@@ -244,8 +244,8 @@ export const EmployeeMapping: React.FC<EmployeeMappingProps> = ({
                         value={editingRateValue} 
                         onChange={e => setEditingRateValue(parseInt(e.target.value) || 0)}
                         style={styles.rateInput}
-                        min={10}
-                        max={500}
+                        min={100}
+                        max={50000}
                         autoFocus
                       />
                       <button 
@@ -267,7 +267,7 @@ export const EmployeeMapping: React.FC<EmployeeMappingProps> = ({
                     <div style={styles.rateValBlock}>
                       {isAdminMode ? (
                         <>
-                          <span style={styles.rateText}>${r.hourlyRate}/hr</span>
+                          <span style={styles.rateText}>₹{r.hourlyRate}/hr</span>
                           <button 
                             onClick={() => {
                               setEditingRole(r.role);

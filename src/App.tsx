@@ -71,28 +71,28 @@ function App() {
       const newMeetings: Meeting[] = [
         {
           id: `meet-synced-${Date.now()}-1`,
-          title: 'Polaris Sprint Triage Review',
-          description: 'Reviewing Android and iOS builds, aligning on open blocker logs and priorities.',
+          title: 'BharatPay Sprint Triage Review',
+          description: 'Reviewing settlement queues, POS scanner logs, and merchant payout callbacks.',
           startTime: new Date(now.getTime() - 24 * 60 * 60 * 1000).toISOString(), // 1 day ago
           endTime: new Date(now.getTime() - 23 * 60 * 60 * 1000).toISOString(),
           durationMinutes: 60,
-          organizerEmail: 'maya.p@company.com',
-          attendeeEmails: ['maya.p@company.com', 'chen.w@company.com', 'emily.b@company.com', 'sarah.j@company.com'],
-          attributedProjectId: 'proj-pol',
+          organizerEmail: 'rohan.d@tattva.in',
+          attendeeEmails: ['rohan.d@tattva.in', 'priya.n@tattva.in', 'ananya.i@tattva.in', 'aarav.s@tattva.in'],
+          attributedProjectId: 'proj-bhp',
           attributionConfidence: 0.96,
           attributionMethod: 'heuristic',
           isManualOverride: false
         },
         {
           id: `meet-synced-${Date.now()}-2`,
-          title: 'Zenith Query Optimisation Audit',
-          description: 'Analyzing slow queries in logs and partitioning PG clusters.',
+          title: 'ONDC Protocol Compliance Audit',
+          description: 'Testing seller registry query latencies and buyer app handshake schemas.',
           startTime: new Date(now.getTime() - 12 * 60 * 60 * 1000).toISOString(), // 12h ago
           endTime: new Date(now.getTime() - 10.5 * 60 * 60 * 1000).toISOString(),
           durationMinutes: 90,
-          organizerEmail: 'alex.r@company.com',
-          attendeeEmails: ['alex.r@company.com', 'marcus.v@company.com'],
-          attributedProjectId: 'proj-zen',
+          organizerEmail: 'amit.v@tattva.in',
+          attendeeEmails: ['amit.v@tattva.in', 'vikram.r@tattva.in'],
+          attributedProjectId: 'proj-ondc',
           attributionConfidence: 0.94,
           attributionMethod: 'heuristic',
           isManualOverride: false
@@ -101,7 +101,7 @@ function App() {
 
       setMeetings(prev => {
         // Prevent duplicate simulation injections
-        const filtered = prev.filter(m => !m.title.startsWith('Polaris Sprint Triage Review'));
+        const filtered = prev.filter(m => !m.title.startsWith('BharatPay Sprint Triage Review'));
         return [...newMeetings, ...filtered];
       });
 

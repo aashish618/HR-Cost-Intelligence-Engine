@@ -178,7 +178,7 @@ export const DashboardOverview: React.FC<DashboardOverviewProps> = ({
               <DollarSign size={20} />
             </div>
           </div>
-          <h2 style={styles.kpiValue}>${totalCost.toLocaleString('en-US', { maximumFractionDigits: 0 })}</h2>
+          <h2 style={styles.kpiValue}>₹{totalCost.toLocaleString('en-US', { maximumFractionDigits: 0 })}</h2>
           <div style={styles.kpiFooter}>
             <TrendingUp size={14} color="#10b981" />
             <span style={{ color: '#10b981', fontWeight: 600 }}>+12%</span>
@@ -310,7 +310,7 @@ export const DashboardOverview: React.FC<DashboardOverviewProps> = ({
                   TOTAL COST
                 </text>
                 <text x="50" y="58" textAnchor="middle" fill="var(--text-primary)" fontSize="9" fontWeight="bold" fontFamily="var(--font-display)">
-                  ${(totalCost / 1000).toFixed(1)}k
+                  {totalCost >= 100000 ? `₹${(totalCost / 100000).toFixed(1)}L` : `₹${(totalCost / 1000).toFixed(0)}k`}
                 </text>
               </svg>
             </div>
@@ -338,7 +338,7 @@ export const DashboardOverview: React.FC<DashboardOverviewProps> = ({
                       <span style={styles.legendSec}>{p.project?.code} • {p.count} meetings</span>
                     </div>
                     <div style={styles.legendStats}>
-                      <span style={styles.legendCost}>${p.cost.toLocaleString('en-US', { maximumFractionDigits: 0 })}</span>
+                      <span style={styles.legendCost}>₹{p.cost.toLocaleString('en-US', { maximumFractionDigits: 0 })}</span>
                       <span style={styles.legendPercent}>{percent.toFixed(0)}%</span>
                     </div>
                   </div>
@@ -460,7 +460,7 @@ export const DashboardOverview: React.FC<DashboardOverviewProps> = ({
                           fontSize="8"
                           textAnchor="end"
                         >
-                          ${Math.round((maxValue * r) / 100) * 100}
+                          ₹{Math.round((maxValue * r) / 100) * 100}
                         </text>
                       ))}
                     </>
@@ -481,7 +481,7 @@ export const DashboardOverview: React.FC<DashboardOverviewProps> = ({
               }} className="glass-panel">
                 <span style={{ fontSize: '0.7rem', color: 'var(--text-secondary)' }}>{hoveredPoint.date}</span>
                 <span style={{ fontSize: '0.9rem', fontWeight: 'bold', color: 'var(--text-primary)' }}>
-                  ${Math.round(hoveredPoint.value).toLocaleString()}
+                  ₹{Math.round(hoveredPoint.value).toLocaleString()}
                 </span>
               </div>
             )}
@@ -507,7 +507,7 @@ export const DashboardOverview: React.FC<DashboardOverviewProps> = ({
                   <div style={styles.barLabels}>
                     <span style={styles.barName}>{r.role}</span>
                     <span style={styles.barValue}>
-                      ${r.cost.toLocaleString('en-US', { maximumFractionDigits: 0 })}
+                      ₹{r.cost.toLocaleString('en-US', { maximumFractionDigits: 0 })}
                       <span style={{ color: 'var(--text-muted)', fontSize: '0.75rem', fontWeight: 'normal' }}>
                         {' '}({r.hours.toFixed(0)} hrs)
                       </span>
@@ -574,8 +574,8 @@ export const DashboardOverview: React.FC<DashboardOverviewProps> = ({
                   </div>
 
                   <div style={styles.projectBudgetStats}>
-                    <span>${cost.toLocaleString('en-US', { maximumFractionDigits: 0 })} spent</span>
-                    <span style={{ color: 'var(--text-muted)' }}>Budget: ${p.budget.toLocaleString()}</span>
+                    <span>₹{cost.toLocaleString('en-US', { maximumFractionDigits: 0 })} spent</span>
+                    <span style={{ color: 'var(--text-muted)' }}>Budget: ₹{p.budget.toLocaleString()}</span>
                   </div>
                 </div>
               );
