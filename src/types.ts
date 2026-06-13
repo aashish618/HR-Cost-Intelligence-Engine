@@ -54,4 +54,5 @@ export interface AppSettings {
   adminPin: string;
   autoSyncMinutes: number;
   hideSalaryDetails: boolean;
+  companyName: string;
 }

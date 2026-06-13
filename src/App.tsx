@@ -11,6 +11,18 @@ import { Settings } from './components/Settings';
 import type { Meeting, Project, Employee, RoleRate, AppSettings } from './types';
 import { storageService } from './services/storageService';
 
+const getCompanyDomain = (company: string): string => {
+  switch (company) {
+    case 'Infosys': return 'infosys.com';
+    case 'Wipro': return 'wipro.com';
+    case 'HCLTech': return 'hcl.com';
+    case 'Tech Mahindra': return 'techmahindra.com';
+    case 'TCS':
+    default:
+      return 'tcs.com';
+  }
+};
+
 function App() {
   // Navigation & UI state
   const [activeTab, setActiveTab] = useState<string>('dashboard');
@@ -27,7 +39,8 @@ function App() {
     geminiApiKey: '',
     adminPin: '1234',
     autoSyncMinutes: 15,
-    hideSalaryDetails: true
+    hideSalaryDetails: true,
+    companyName: 'TCS'
   });
 
   // Load state on mount
@@ -60,6 +73,63 @@ function App() {
     if (settings.adminPin) storageService.saveSettings(settings);
   }, [settings]);
 
+  // Synchronize employee and meeting domains when the company context changes
+  useEffect(() => {
+    if (!settings.companyName) return;
+    const targetDomain = getCompanyDomain(settings.companyName);
+    
+    // Update employees email domains if they do not match
+    setEmployees(prev => {
+      let changed = false;
+      const updated = prev.map(emp => {
+        const parts = emp.email.split('@');
+        if (parts.length === 2 && parts[1] !== targetDomain) {
+          changed = true;
+          return { ...emp, email: `${parts[0]}@${targetDomain}` };
+        }
+        return emp;
+      });
+      return changed ? updated : prev;
+    });
+
+    // Update meetings email domains if they do not match
+    setMeetings(prev => {
+      let changed = false;
+      const updated = prev.map(meet => {
+        // Organizer
+        let orgEmail = meet.organizerEmail;
+        const orgParts = orgEmail.split('@');
+        if (orgParts.length === 2 && orgParts[1] !== targetDomain) {
+          orgEmail = `${orgParts[0]}@${targetDomain}`;
+          changed = true;
+        }
+
+        // Attendees
+        let attChanged = false;
+        const attendeeEmails = meet.attendeeEmails.map(att => {
+          const attParts = att.split('@');
+          if (attParts.length === 2 && attParts[1] !== targetDomain) {
+            attChanged = true;
+            return `${attParts[0]}@${targetDomain}`;
+          }
+          return att;
+        });
+
+        if (attChanged) changed = true;
+
+        if (meet.organizerEmail !== orgEmail || attChanged) {
+          return {
+            ...meet,
+            organizerEmail: orgEmail,
+            attendeeEmails
+          };
+        }
+        return meet;
+      });
+      return changed ? updated : prev;
+    });
+  }, [settings.companyName]);
+
   // Sync Calendar action
   const handleCalendarSync = () => {
     setIsSyncing(true);
@@ -68,6 +138,7 @@ function App() {
     setTimeout(() => {
       // Ingest 2 new events
       const now = new Date();
+      const domain = getCompanyDomain(settings.companyName);
       const newMeetings: Meeting[] = [
         {
           id: `meet-synced-${Date.now()}-1`,
@@ -76,8 +147,8 @@ function App() {
           startTime: new Date(now.getTime() - 24 * 60 * 60 * 1000).toISOString(), // 1 day ago
           endTime: new Date(now.getTime() - 23 * 60 * 60 * 1000).toISOString(),
           durationMinutes: 60,
-          organizerEmail: 'rohan.d@tattva.in',
-          attendeeEmails: ['rohan.d@tattva.in', 'priya.n@tattva.in', 'ananya.i@tattva.in', 'aarav.s@tattva.in'],
+          organizerEmail: `rohan.d@${domain}`,
+          attendeeEmails: [`rohan.d@${domain}`, `priya.n@${domain}`, `ananya.i@${domain}`, `aarav.s@${domain}`],
           attributedProjectId: 'proj-bhp',
           attributionConfidence: 0.96,
           attributionMethod: 'heuristic',
@@ -90,8 +161,8 @@ function App() {
           startTime: new Date(now.getTime() - 12 * 60 * 60 * 1000).toISOString(), // 12h ago
           endTime: new Date(now.getTime() - 10.5 * 60 * 60 * 1000).toISOString(),
           durationMinutes: 90,
-          organizerEmail: 'amit.v@tattva.in',
-          attendeeEmails: ['amit.v@tattva.in', 'vikram.r@tattva.in'],
+          organizerEmail: `amit.v@${domain}`,
+          attendeeEmails: [`amit.v@${domain}`, `vikram.r@${domain}`],
           attributedProjectId: 'proj-ondc',
           attributionConfidence: 0.94,
           attributionMethod: 'heuristic',
@@ -262,6 +333,7 @@ function App() {
         isAdminMode={isAdminMode}
         setIsAdminMode={setIsAdminMode}
         adminPin={settings.adminPin}
+        companyName={settings.companyName}
       />
 
       {/* Main Page Area */}

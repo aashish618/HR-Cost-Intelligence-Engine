@@ -16,6 +16,7 @@ interface SidebarProps {
   isAdminMode: boolean;
   setIsAdminMode: (mode: boolean) => void;
   adminPin: string;
+  companyName: string;
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({ 
@@ -23,7 +24,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
   setActiveTab, 
   isAdminMode, 
   setIsAdminMode,
-  adminPin
+  adminPin,
+  companyName
 }) => {
   const [showPinModal, setShowPinModal] = useState(false);
   const [pinInput, setPinInput] = useState('');
@@ -63,8 +65,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
       <div style={styles.logoContainer}>
         <div style={styles.logoIcon}>🪙</div>
         <div>
-          <h1 style={styles.logoTitle}>HR Cost</h1>
-          <p style={styles.logoSubtitle}>Intelligence Engine</p>
+          <h1 style={styles.logoTitle}>{companyName || 'TCS'}</h1>
+          <p style={styles.logoSubtitle}>Cost Intelligence</p>
         </div>
       </div>
 

@@ -15,6 +15,7 @@ export const Settings: React.FC<SettingsProps> = ({
 }) => {
   const [apiKeyInput, setApiKeyInput] = useState(settings.geminiApiKey);
   const [pinInput, setPinInput] = useState(settings.adminPin);
+  const [companyInput, setCompanyInput] = useState(settings.companyName || 'TCS');
   const [saveSuccess, setSaveSuccess] = useState(false);
   const [resetSuccess, setResetSuccess] = useState(false);
 
@@ -34,7 +35,8 @@ export const Settings: React.FC<SettingsProps> = ({
     const newSettings = {
       ...settings,
       geminiApiKey: apiKeyInput,
-      adminPin: pinInput
+      adminPin: pinInput,
+      companyName: companyInput
     };
     
     setSettings(newSettings);
@@ -42,6 +44,7 @@ export const Settings: React.FC<SettingsProps> = ({
     // Update logs
     setLogs(prev => [
       `[${new Date().toLocaleTimeString()}] INFO: System configuration updated.`,
+      `[${new Date().toLocaleTimeString()}] INFO: Active enterprise context set to ${companyInput}.`,
       apiKeyInput 
         ? `[${new Date().toLocaleTimeString()}] SUCCESS: Live Gemini API Key mapped. Zero-shot LLM endpoint active.`
         : `[${new Date().toLocaleTimeString()}] WARNING: Gemini Key removed. Reverting to local heuristic parser.`,
@@ -57,6 +60,7 @@ export const Settings: React.FC<SettingsProps> = ({
       onResetDatabase();
       setApiKeyInput('');
       setPinInput('1234');
+      setCompanyInput('TCS');
       setResetSuccess(true);
       setLogs(prev => [
         `[${new Date().toLocaleTimeString()}] WARNING: Database factory wipe triggered by user.`,
@@ -96,6 +100,34 @@ export const Settings: React.FC<SettingsProps> = ({
               />
               <p style={styles.inputHelpText}>
                 Entering your Google Gemini API key enables real-time zero-shot semantic matching. When empty, the engine falls back to the local keywords/team alignment scoring rules.
+              </p>
+            </div>
+
+            {/* Active Company Selector */}
+            <div style={{ ...styles.formGroup, marginTop: '0.5rem' }}>
+              <label>Target Enterprise Context</label>
+              <select 
+                value={companyInput} 
+                onChange={e => setCompanyInput(e.target.value)}
+                style={{
+                  width: '100%',
+                  background: 'var(--bg-tertiary)',
+                  border: '1px solid var(--glass-border)',
+                  fontSize: '0.85rem',
+                  height: '38px',
+                  padding: '0 0.5rem',
+                  color: 'var(--text-primary)',
+                  borderRadius: 'var(--radius-sm)'
+                }}
+              >
+                <option value="TCS">TCS (Tata Consultancy Services)</option>
+                <option value="Infosys">Infosys Technologies</option>
+                <option value="Wipro">Wipro Limited</option>
+                <option value="HCLTech">HCLTech (HCL Technologies)</option>
+                <option value="Tech Mahindra">Tech Mahindra</option>
+              </select>
+              <p style={styles.inputHelpText}>
+                Active top Indian IT corporation audited by the engine. Switching propagates brand adjustments and localized email matching policies across all directories.
               </p>
             </div>
 
